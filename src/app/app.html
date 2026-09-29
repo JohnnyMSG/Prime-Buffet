@@ -10,7 +10,36 @@
         <a href="#pacotes">Pacotes</a>
         <a href="#galeria">Galeria</a>
       </div>
-      <a [href]="waLink" target="_blank" rel="noopener" class="btn btn--gold btn--sm">Orçamento</a>
+      <a [href]="waLink" target="_blank" rel="noopener" class="btn btn--gold btn--sm nav__cta">Orçamento</a>
+
+      <!-- Celular: menu de três pontinhos no lugar do botão de orçamento -->
+      <div class="nav__mais">
+        <button
+          type="button"
+          class="nav__toggle"
+          [class.nav__toggle--aberto]="menuAberto()"
+          [attr.aria-expanded]="menuAberto()"
+          aria-controls="menu-mobile"
+          aria-label="Abrir menu"
+          (click)="menuAberto.set(!menuAberto()); $event.stopPropagation()"
+        >
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <circle cx="12" cy="5" r="2" />
+            <circle cx="12" cy="12" r="2" />
+            <circle cx="12" cy="19" r="2" />
+          </svg>
+        </button>
+        @if (menuAberto()) {
+          <div id="menu-mobile" class="nav__dropdown" (click)="$event.stopPropagation()">
+            <a href="#sobre" (click)="menuAberto.set(false)">Sobre</a>
+            <a href="#pacotes" (click)="menuAberto.set(false)">Pacotes</a>
+            <a href="#galeria" (click)="menuAberto.set(false)">Galeria</a>
+            <a [href]="waLink" target="_blank" rel="noopener" class="nav__dropdown-cta" (click)="menuAberto.set(false)">
+              Orçamento
+            </a>
+          </div>
+        }
+      </div>
     </nav>
   </div>
 </header>

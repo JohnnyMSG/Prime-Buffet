@@ -30,6 +30,7 @@ export class App implements AfterViewInit, OnDestroy {
 
   protected readonly navSolido = signal(false);
   protected readonly galeriaPausada = signal(false);
+  protected readonly menuAberto = signal(false);
 
   protected readonly pacotes: (Pacote & { link: string })[] = [
     {
@@ -81,6 +82,13 @@ export class App implements AfterViewInit, OnDestroy {
     const hero = document.getElementById('topo');
     const limite = hero ? hero.offsetHeight - 70 : 400;
     this.navSolido.set(window.scrollY > limite);
+  }
+
+  // Fecha o menu de três pontinhos ao tocar fora dele ou apertar Esc
+  @HostListener('document:click')
+  @HostListener('document:keydown.escape')
+  protected fecharMenu(): void {
+    this.menuAberto.set(false);
   }
 
   // Animações de entrada ao rolar: cada [data-reveal] ganha .is-visible quando aparece na tela
