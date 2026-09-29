@@ -37,3 +37,6 @@ __screenshots__/
 # Sistema
 .DS_Store
 Thumbs.db
+
+# Cloudflare Wrangler
+.wrangler/
