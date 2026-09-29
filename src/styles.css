@@ -1,0 +1,36 @@
+html,
+body {
+  margin: 0;
+  background: #0d2447;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d2447;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1d3a66;
+}
+
+::selection {
+  background: #e7b872;
+  color: #0d2447;
+}

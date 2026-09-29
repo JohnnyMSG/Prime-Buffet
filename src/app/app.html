@@ -1,0 +1,200 @@
+<header class="nav" [class.nav--solido]="navSolido()">
+  <div class="nav__inner">
+    <a href="#topo" class="nav__brand">
+      <img src="assets/logo.png" alt="Prime Buffet Gourmet" class="nav__logo" />
+      <span class="nav__name">Prime Buffet</span>
+    </a>
+    <nav class="nav__links">
+      <div class="nav__menu">
+        <a href="#sobre">Sobre</a>
+        <a href="#pacotes">Pacotes</a>
+        <a href="#galeria">Galeria</a>
+      </div>
+      <a [href]="waLink" target="_blank" rel="noopener" class="btn btn--gold btn--sm">Orçamento</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section id="topo" class="hero">
+    <img src="assets/fundo.png" alt="" class="hero__bg" />
+    <div class="hero__overlay"></div>
+    <div class="hero__ring"></div>
+    <div class="hero__content">
+      <img src="assets/logo.png" alt="Prime Buffet Gourmet" class="hero__logo" />
+      <h1 class="hero__title">
+        <span class="hero__name">Prime Buffet</span>
+        <span class="hero__sub">Gourmet</span>
+      </h1>
+      <p class="hero__text">
+        Sabor, capricho e momentos inesquecíveis. Do cardápio à última taça, cuidamos de cada detalhe do seu casamento,
+        aniversário ou evento corporativo para você só aproveitar a festa.
+      </p>
+      <div class="hero__ctas">
+        <a [href]="waLink" target="_blank" rel="noopener" class="btn btn--gold">Solicitar orçamento</a>
+        <a href="#pacotes" class="btn btn--outline">Ver pacotes</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre" class="light">
+    <div class="about container">
+      <div class="about__media" data-reveal="left">
+        <div class="eyebrow eyebrow--dark about__eyebrow--mobile">Sobre o Prime Buffet</div>
+        <img src="assets/loanda.png" alt="Loanda, chef do Prime Buffet" class="about__img" />
+        <img src="assets/logo.png" alt="" class="about__badge" data-reveal="spin" style="--reveal-delay: 500ms" />
+      </div>
+      <div class="about__body">
+        <div class="eyebrow eyebrow--dark about__eyebrow--desktop" data-reveal>Sobre o Prime Buffet</div>
+        <h2 class="title title--balance" data-reveal style="--reveal-delay: 100ms">Cuidamos da mesa para você viver a festa.</h2>
+        <p class="about__text" data-reveal style="--reveal-delay: 200ms">
+          O Prime Buffet Gourmet nasceu da paixão por receber bem. Montamos mesas de frios, frutas e pratos quentes com
+          apresentação impecável, ingredientes selecionados e um cardápio pensado junto com você.
+        </p>
+        <p class="about__text" data-reveal style="--reveal-delay: 300ms">
+          Do primeiro contato ao último convidado, nossa equipe cuida da montagem, do serviço e da organização — para que
+          você só precise aproveitar.
+        </p>
+        <div class="stats" data-reveal data-contar style="--reveal-delay: 400ms">
+          @for (n of numeros; track n.label; let i = $index) {
+            <div class="stat">
+              <strong class="stat__value">+{{ contagem()[i] }}{{ n.sufixo }}</strong>
+              <span class="stat__label">{{ n.label }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pacotes" class="container section">
+    <div class="section__head">
+      <div class="eyebrow" data-reveal>Pacotes</div>
+      <h2 class="title" data-reveal style="--reveal-delay: 100ms">Escolha o formato do seu evento</h2>
+      <p class="section__lead" data-reveal style="--reveal-delay: 200ms">
+        Todos os pacotes são personalizáveis. Valores sob consulta, conforme número de convidados e data.
+      </p>
+    </div>
+    <div class="packages">
+      @for (p of pacotes; track p.nome; let i = $index) {
+        <!-- O wrapper recebe a animação de entrada; o card fica livre para o efeito de hover -->
+        <div class="pkg-wrap" data-reveal [style.--reveal-delay]="i * 150 + 'ms'">
+          <a [href]="p.link" target="_blank" rel="noopener" class="pkg" [class.pkg--destaque]="p.destaque">
+            <div class="pkg__media">
+              <img [src]="p.img" [alt]="p.nome" class="pkg__img" loading="lazy" />
+            </div>
+            <div class="pkg__body">
+              <div class="pkg__head">
+                <h3 class="pkg__name">{{ p.nome }}</h3>
+                <span class="pkg__tag">{{ p.tag }}</span>
+              </div>
+              <p class="pkg__desc">{{ p.desc }}</p>
+              <div class="pkg__items">
+                @for (it of p.itens; track it) {
+                  <div class="pkg__item"><span class="pkg__star">✦</span><span>{{ it }}</span></div>
+                }
+              </div>
+              <span class="pkg__btn">Quero este pacote <span class="pkg__arrow">→</span></span>
+            </div>
+          </a>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section id="galeria" class="gallery-section">
+    <div class="container section">
+      <div class="gallery__head">
+        <div class="gallery__titles">
+          <div class="eyebrow" data-reveal>Galeria</div>
+          <h2 class="title" data-reveal style="--reveal-delay: 100ms">Momentos que servimos</h2>
+        </div>
+        <a [href]="instagram" target="_blank" rel="noopener" class="btn btn--outline btn--md" data-reveal="right" style="--reveal-delay: 200ms">
+          Ver mais no Instagram →
+        </a>
+      </div>
+      <div
+        class="gallery"
+        data-reveal
+        [class.gallery--pausada]="galeriaPausada()"
+        (pointerdown)="galeriaPausada.set(true)"
+        (pointerup)="galeriaPausada.set(false)"
+        (pointercancel)="galeriaPausada.set(false)"
+        (pointerleave)="galeriaPausada.set(false)"
+      >
+        <div class="gallery__track">
+          @for (g of galeria; track g; let i = $index) {
+            <a [href]="instagram" target="_blank" rel="noopener" class="gallery__item" data-reveal="zoom" [style.--reveal-delay]="(i % 5) * 90 + 'ms'">
+              <img [src]="g" alt="Evento Prime Buffet" loading="lazy" decoding="async" />
+            </a>
+          }
+          <!-- Cópia das fotos para o carrossel do celular emendar sem salto (escondida no computador) -->
+          @for (g of galeria; track g) {
+            <a [href]="instagram" target="_blank" rel="noopener" class="gallery__item gallery__item--copia" aria-hidden="true" tabindex="-1">
+              <img [src]="g" alt="" loading="lazy" decoding="async" />
+            </a>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="depoimentos" class="light">
+    <div class="container testimonials">
+      <div class="section__head section__head--flush">
+        <div class="eyebrow eyebrow--dark" data-reveal>Depoimentos</div>
+        <h2 class="title" data-reveal style="--reveal-delay: 100ms">Quem provou, recomenda</h2>
+      </div>
+      <div class="quotes">
+        @for (d of depoimentos; track d.nome; let i = $index) {
+          <figure class="quote" data-reveal [style.--reveal-delay]="i * 150 + 'ms'">
+            <blockquote class="quote__text">“{{ d.texto }}”</blockquote>
+            <figcaption class="quote__cap">
+              <span class="quote__line"></span>
+              <strong class="quote__name">{{ d.nome }}</strong>
+              <span class="quote__event">{{ d.evento }}</span>
+            </figcaption>
+          </figure>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="container section">
+    <div class="contact" data-reveal="zoom">
+      <div class="contact__text">
+        <h2 class="title title--balance contact__title" data-reveal style="--reveal-delay: 150ms">Vamos planejar o seu evento?</h2>
+        <p class="section__lead" data-reveal style="--reveal-delay: 250ms">
+          Conte a data, o tipo de festa e o número de convidados. Respondemos com uma proposta sob medida.
+        </p>
+      </div>
+      <div class="contact__links">
+        <div data-reveal="right" style="--reveal-delay: 300ms">
+          <a [href]="waLink" target="_blank" rel="noopener" class="contact__link contact__link--outline">
+            <span>WhatsApp</span><span>Falar com a gente →</span>
+          </a>
+        </div>
+        <div data-reveal="right" style="--reveal-delay: 400ms">
+          <a [href]="instagram" target="_blank" rel="noopener" class="contact__link contact__link--gold">
+            <span>Instagram</span><span>{{ perfil }} →</span>
+          </a>
+        </div>
+        <div data-reveal="right" style="--reveal-delay: 500ms">
+          <a [href]="threads" target="_blank" rel="noopener" class="contact__link contact__link--outline">
+            <span>Threads</span><span>{{ perfil }} →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer__inner" data-reveal>
+    <div class="footer__brand">
+      <img src="assets/logo.png" alt="" class="footer__logo" />
+      <span>Prime Buffet Gourmet · Festas e Eventos</span>
+    </div>
+    <span>© {{ ano }} Prime Buffet Gourmet</span>
+  </div>
+</footer>

@@ -1,0 +1,1024 @@
+:host {
+  --navy: #0d2447;
+  --navy-deep: #0a1d3a;
+  --navy-card: #12305a;
+  --cream: #f6f1e8;
+  --ivory: #f4efe6;
+  --gold: #e7b872;
+  --gold-light: #f3d09c;
+  --gold-dark: #a87a36;
+  --muted: #cfd6e2;
+  --ink-soft: #3a4a63;
+  --ink-muted: #56647a;
+  --serif: 'Cormorant Garamond', serif;
+
+  display: block;
+  min-height: 100vh;
+  background: var(--navy);
+  color: var(--ivory);
+  font-family: Manrope, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--gold-light);
+}
+
+img {
+  display: block;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section {
+  padding: 104px 24px;
+}
+
+.light {
+  background: var(--cream);
+  color: var(--navy);
+}
+
+.eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.eyebrow--dark {
+  color: var(--gold-dark);
+  font-weight: 700;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(38px, 5vw, 58px);
+  line-height: 1.04;
+}
+
+.title--balance {
+  text-wrap: balance;
+}
+
+/* Botões */
+.btn {
+  display: inline-block;
+  padding: clamp(12px, 2vh, 18px) 30px;
+  border-radius: 999px;
+  font-size: 16px;
+  transition: background 0.2s, color 0.2s, transform 0.25s, box-shadow 0.25s;
+}
+
+.btn--gold {
+  background: var(--gold);
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.btn--gold:hover {
+  background: var(--gold-light);
+  color: var(--navy);
+}
+
+.btn--outline {
+  border: 1px solid rgba(231, 184, 114, 0.5);
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.btn--outline:hover {
+  background: rgba(231, 184, 114, 0.1);
+}
+
+.btn--sm {
+  padding: 10px 18px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.btn--md {
+  padding: 14px 22px;
+  font-size: 15px;
+}
+
+/* Navegação */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.nav--solido {
+  background: rgba(13, 36, 71, 0.94);
+  backdrop-filter: blur(8px);
+  border-bottom-color: rgba(231, 184, 114, 0.18);
+}
+
+.nav__inner {
+  padding: 12px clamp(20px, 3vw, 48px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav__logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.nav__name {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.02em;
+}
+
+.nav__links,
+.nav__menu {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.nav__menu a {
+  color: var(--ivory);
+}
+
+.nav__menu a:hover {
+  color: var(--gold-light);
+}
+
+@media (max-width: 640px) {
+  .nav__menu {
+    display: none;
+  }
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: calc(69px + clamp(16px, 4vh, 48px)) 24px clamp(24px, 5vh, 56px);
+  text-align: center;
+  height: 100svh;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(1.5px);
+  transform: scale(1.04);
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(13, 36, 71, 0.78) 0%, rgba(13, 36, 71, 0.7) 45%, rgba(13, 36, 71, 0.92) 100%);
+}
+
+.hero__ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(92vw, 112vh);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(231, 184, 114, 0.28);
+  pointer-events: none;
+}
+
+.hero__content {
+  position: relative;
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(12px, 2.2vh, 24px);
+  flex: none;
+}
+
+.hero__logo {
+  width: clamp(62px, 12.1vh, 166px);
+  height: clamp(62px, 12.1vh, 166px);
+  border-radius: 50%;
+  box-shadow: 0 0 0 8px rgba(231, 184, 114, 0.08);
+}
+
+.hero__title {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2px, 1vh, 10px);
+  font-family: var(--serif);
+  font-weight: 500;
+  line-height: 0.9;
+  color: var(--ivory);
+}
+
+.hero__name {
+  font-size: clamp(46px, min(11vw, 12vh), 132px);
+  letter-spacing: 0.01em;
+}
+
+.hero__sub {
+  font-size: clamp(20px, min(3.4vw, 3.8vh), 38px);
+  font-style: italic;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+}
+
+.hero__text {
+  margin: clamp(9px, 2.75vh, 31px) 0;
+  font-size: clamp(15px, 2.3vh, 18px);
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 580px;
+  text-wrap: pretty;
+}
+
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Sobre */
+.about {
+  padding: 104px 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* "Sobre o Prime Buffet": acima da foto no celular, acima do título no computador */
+.about__eyebrow--mobile {
+  margin-bottom: 20px;
+}
+
+.about__eyebrow--desktop {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .about {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about__eyebrow--mobile {
+    display: none;
+  }
+
+  .about__eyebrow--desktop {
+    display: block;
+  }
+}
+
+.about__media {
+  position: relative;
+}
+
+.about__img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 15%;
+  border-radius: 16px;
+}
+
+.about__badge {
+  position: absolute;
+  right: -18px;
+  bottom: -28px;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  border: 6px solid var(--cream);
+}
+
+@media (max-width: 520px) {
+  .about__badge {
+    right: -6px;
+    width: 104px;
+    height: 104px;
+  }
+}
+
+.about__body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.about__text {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  border-top: 1px solid #d9cdb8;
+  padding-top: 24px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stat__value {
+  font-family: var(--serif);
+  font-size: clamp(40px, 4.5vw, 54px);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--navy);
+}
+
+.stat__label {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ink-muted);
+}
+
+/* Cabeçalho de seção */
+.section__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  margin-bottom: 56px;
+}
+
+.section__head--flush {
+  margin-bottom: 0;
+}
+
+.section__lead {
+  margin: 0;
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 560px;
+  line-height: 1.6;
+}
+
+/* Pacotes */
+.packages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 24px;
+}
+
+.pkg {
+  --pkg-bg: var(--navy-card);
+  --pkg-fg: var(--ivory);
+  --pkg-accent: var(--gold);
+  --pkg-btn-bg: rgba(231, 184, 114, 0.14);
+  --pkg-btn-fg: var(--gold);
+
+  display: flex;
+  flex-direction: column;
+  background: var(--pkg-bg);
+  color: var(--pkg-fg);
+  border: 1px solid rgba(231, 184, 114, 0.3);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s, border-color 0.35s;
+}
+
+.pkg--destaque {
+  --pkg-bg: var(--cream);
+  --pkg-fg: var(--navy);
+  --pkg-accent: var(--gold-dark);
+  --pkg-btn-bg: var(--navy);
+  --pkg-btn-fg: var(--ivory);
+}
+
+.pkg:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+  border-color: var(--gold);
+  color: var(--pkg-fg);
+}
+
+.pkg__img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.pkg__body {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  flex: 1;
+}
+
+.pkg__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.pkg__name {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 32px;
+}
+
+.pkg__tag {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--pkg-accent);
+}
+
+.pkg__desc {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.pkg__items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 15px;
+  flex: 1;
+}
+
+.pkg__item {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.pkg__star {
+  color: var(--pkg-accent);
+}
+
+.pkg__btn {
+  text-align: center;
+  background: var(--pkg-btn-bg);
+  color: var(--pkg-btn-fg);
+  padding: 15px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* Galeria */
+.gallery-section {
+  background: var(--navy-deep);
+  border-top: 1px solid rgba(231, 184, 114, 0.15);
+}
+
+.gallery__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.gallery__titles {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.gallery__track {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  gap: 12px;
+}
+
+.gallery__item {
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.gallery__item--copia {
+  display: none;
+}
+
+.gallery__item img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.gallery__item:hover img {
+  transform: scale(1.04);
+}
+
+/* Celular: faixa que desliza sozinha, contínua e em loop.
+   As fotos aparecem duas vezes em sequência; a faixa anda metade do próprio tamanho
+   (exatamente uma volta) e recomeça, então a emenda não aparece.
+   O espaço entre fotos é margem (não gap) para cada volta medir exatamente 10 × (foto + espaço). */
+@media (max-width: 640px) {
+  .gallery {
+    overflow: hidden;
+    margin: 0 -24px;
+  }
+
+  .gallery__track {
+    display: flex;
+    gap: 0;
+    width: max-content;
+    animation: galeria-desliza 45s linear infinite;
+  }
+
+  .gallery--pausada .gallery__track {
+    animation-play-state: paused;
+  }
+
+  .gallery__item,
+  .gallery__item--copia {
+    display: block;
+    width: 62vw;
+    margin-right: 12px;
+    flex: none;
+  }
+}
+
+@keyframes galeria-desliza {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Quem pede menos movimento no celular: sem animação, rolagem manual */
+@media (max-width: 640px) and (prefers-reduced-motion: reduce) {
+  .gallery {
+    overflow-x: auto;
+  }
+
+  .gallery__track {
+    animation: none;
+    padding: 0 12px 0 24px;
+  }
+
+  .gallery__item--copia {
+    display: none;
+  }
+}
+
+/* Depoimentos */
+.testimonials {
+  padding: 112px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.testimonials .title {
+  font-size: clamp(38px, 5vw, 56px);
+}
+
+.quotes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 48px 0;
+}
+
+.quote {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 8px clamp(8px, 2vw, 32px);
+}
+
+.quote__text {
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(21px, 2vw, 24px);
+  line-height: 1.45;
+  color: var(--navy);
+  text-wrap: pretty;
+}
+
+.quote__cap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.quote__line {
+  width: 24px;
+  height: 1px;
+  background: var(--gold-dark);
+  margin-bottom: 10px;
+}
+
+.quote__name {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.quote__event {
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+
+/* Contato */
+.contact {
+  color: var(--ivory);
+  border: 1px solid rgba(231, 184, 114, 0.55);
+  border-radius: 28px;
+  padding: clamp(40px, 6vw, 80px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: 40px;
+  align-items: center;
+}
+
+@media (max-width: 480px) {
+  .contact {
+    padding: 32px 20px;
+  }
+}
+
+.contact__text {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact__title {
+  font-size: clamp(38px, 5vw, 60px);
+  line-height: 1.02;
+}
+
+.contact__links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact__link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 22px 28px;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 18px;
+  transition: background 0.2s, transform 0.25s, box-shadow 0.25s;
+}
+
+.contact__link--gold {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+.contact__link--gold:hover {
+  background: var(--gold-light);
+  color: var(--navy);
+}
+
+.contact__link--outline {
+  color: var(--gold);
+  border: 1px solid rgba(231, 184, 114, 0.45);
+}
+
+.contact__link--outline:hover {
+  background: rgba(231, 184, 114, 0.08);
+  color: var(--gold);
+}
+
+/* Rodapé */
+.footer {
+  border-top: 1px solid rgba(231, 184, 114, 0.18);
+}
+
+.footer__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  min-height: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 14.5px;
+  line-height: 1;
+  color: #9fb0c8;
+}
+
+.footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer__logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex: none;
+}
+
+/* ============================================================
+   Animações
+   ============================================================ */
+
+/* Entrada ao rolar: o elemento com [data-reveal] começa escondido e
+   aparece quando ganha .is-visible (adicionada pelo app.ts). */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+[data-reveal='zoom'] {
+  transform: scale(0.94);
+}
+
+[data-reveal='left'] {
+  transform: translateX(-48px);
+}
+
+[data-reveal='right'] {
+  transform: translateX(48px);
+}
+
+[data-reveal='spin'] {
+  transform: scale(0.4) rotate(-90deg);
+  transition-duration: 1.1s;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Galeria: no computador as fotos entram uma a uma; no celular a faixa entra inteira */
+@media (min-width: 641px) {
+  .gallery[data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery__item[data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Menu desce ao abrir a página */
+.nav {
+  animation: nav-entra 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s both;
+}
+
+@keyframes nav-entra {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+/* Topo: entrada em sequência + fundo com zoom lento e círculo "respirando" */
+.hero__bg {
+  animation: hero-zoom 24s ease-in-out infinite alternate;
+}
+
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.04);
+  }
+  to {
+    transform: scale(1.14);
+  }
+}
+
+.hero__ring {
+  animation:
+    ring-entra 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) both,
+    ring-respira 7s ease-in-out 1.6s infinite alternate;
+}
+
+@keyframes ring-entra {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes ring-respira {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+    border-color: rgba(231, 184, 114, 0.28);
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1.04);
+    border-color: rgba(231, 184, 114, 0.12);
+  }
+}
+
+.hero__logo,
+.hero__name,
+.hero__sub,
+.hero__text,
+.hero__ctas {
+  animation: hero-entra 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.hero__logo {
+  animation-name: hero-logo;
+  animation-duration: 1.2s;
+}
+
+.hero__name {
+  animation-delay: 0.35s;
+}
+
+.hero__sub {
+  animation-delay: 0.55s;
+}
+
+.hero__text {
+  animation-delay: 0.75s;
+}
+
+.hero__ctas {
+  animation-delay: 0.95s;
+}
+
+@keyframes hero-entra {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+}
+
+@keyframes hero-logo {
+  from {
+    opacity: 0;
+    transform: scale(0.6) rotate(-20deg);
+  }
+}
+
+/* Botões levantam no hover */
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Pacotes: o wrapper anima a entrada, o card faz o hover; a foto dá zoom e a seta anda */
+.pkg-wrap {
+  display: flex;
+}
+
+.pkg-wrap > .pkg {
+  flex: 1;
+}
+
+.pkg__media {
+  overflow: hidden;
+}
+
+.pkg__img {
+  transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.pkg:hover .pkg__img {
+  transform: scale(1.06);
+}
+
+.pkg__arrow {
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+.pkg:hover .pkg__arrow {
+  transform: translateX(5px);
+}
+
+/* Depoimentos: a linha dourada cresce quando o depoimento aparece */
+.quote .quote__line {
+  width: 0;
+  transition: width 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: calc(var(--reveal-delay, 0ms) + 500ms);
+}
+
+.quote.is-visible .quote__line {
+  width: 24px;
+}
+
+/* Contato: links deslizam um pouco no hover */
+.contact__link:hover {
+  transform: translateX(4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Quem pede menos movimento no aparelho: tudo parado e já no lugar */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .nav,
+  .hero__bg,
+  .hero__ring,
+  .hero__logo,
+  .hero__name,
+  .hero__sub,
+  .hero__text,
+  .hero__ctas {
+    animation: none;
+  }
+
+  .quote .quote__line {
+    width: 24px;
+    transition: none;
+  }
+
+  .btn:hover,
+  .contact__link:hover,
+  .pkg:hover,
+  .pkg:hover .pkg__img,
+  .pkg:hover .pkg__arrow {
+    transform: none;
+  }
+}
