@@ -82,6 +82,13 @@ export class App implements AfterViewInit, OnDestroy {
     const hero = document.getElementById('topo');
     const limite = hero ? hero.offsetHeight - 70 : 400;
     this.navSolido.set(window.scrollY > limite);
+
+    // Chegou ao fim da página: mostra o que ainda não apareceu (ex.: rodapé, que é baixo demais para o observer)
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+      this.elementRef.nativeElement
+        .querySelectorAll<HTMLElement>('[data-reveal]:not(.is-visible)')
+        .forEach((el) => this.revelar(el, false));
+    }
   }
 
   // Fecha o menu de três pontinhos ao tocar fora dele ou apertar Esc
@@ -109,7 +116,7 @@ export class App implements AfterViewInit, OnDestroy {
           this.observer?.unobserve(entry.target);
         }
       },
-      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' },
     );
     els.forEach((el) => this.observer?.observe(el));
   }
@@ -119,6 +126,8 @@ export class App implements AfterViewInit, OnDestroy {
   }
 
   private revelar(el: HTMLElement, imediato: boolean): void {
+    if (el.classList.contains('is-visible')) return;
+    this.observer?.unobserve(el);
     el.classList.add('is-visible');
     if (el.hasAttribute('data-contar')) this.contarNumeros(imediato ? 0 : 1800);
   }
